@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <title>Bina Bangsa | Daftar Klinik </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+            .jumbotron {
+                background-image: url("dokter222.png");
+                background-color: #17234E;
+                margin-bottom: 0;
+                min-height: 50%;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+            a {
+                font-family: 'Josefin Sans', sans-serif;
+                text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+                font-size: 66px;
+            }
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 10px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+
+            /* Set a style for all buttons */
+            .button {
+                display: inline-block;
+                border-radius: 6px;
+                background-color: #000000;
+                border: none;
+                color: white;
+                text-align: center;
+                font-size: 28px;
+                padding: 8px;
+                width: 146px;
+                transition: all 0.5s;
+                cursor: pointer;
+            }
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .button:hover {
+                background-color: #1EE849;
+                color: black;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+            .button:hover span {
+                padding-right: 25px;
+            }
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+ #scrolltable { margin-top: 20px; height: 300px; overflow: auto; }
+            #scrolltable th div { position: absolute; margin-top: 20px; }
+
+            #outtable{
+                padding: 30px;
+                border:1px solid #e3e3e3;
+                width:550px;
+                border-radius: 10px;
+
+            }
+
+            .short{
+                width: 50px;
+            }
+
+            .normal{
+                width: 150px;
+
+            }
+            table{
+                border-collapse: collapse;
+                font-family: arial;
+                color:#5E5B5C;
+
+            }
+thead th{
+                text-align: left;
+                padding: 10px;
+            }
+
+            tbody td{
+                border-top: 1px solid #e3e3e3;
+                padding: 10px;
+            }
+
+            tbody tr:nth-child(even){
+                background: #F6F5FA;
+            }
+
+            tbody tr:hover{
+                background: #EAE9F5
+            }
+        </style>
+            </head>
+ <body style="background-image:dokter222.png">
+        <div class="jumbotron text-center">
+            <a href="index.html" style="text-decoration: none"><font color="black" size="15"><b>Rumah Sakit Bina Bangsa</font><font color="red"><b>+</b></font></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="bg">
+                        <h1><font face="Century Gothic" color=#0000 size="4"><b>Daftar Dokter</b></font>
+                        </h1>
+
+                        <button class="button"  id="save" type="button" onclick="loadDokter()" style="vertical-align:middle"><font face="Century Gothic" size="4" ><span>Tampil</span></font></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div id="outtable">
+       <p id="demo3"></p> 
+<div id="tampil2"></div>
+<script>
+    function loadDokter() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "http://202.94.83.190:8080/165314071RSku/webresources/dokter";
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                myFunction(this.responseText);
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        function myFunction(response) {
+            var arr = JSON.parse(response);
+            var i;
+            var out = "<table><tr><td>Nomor</td><td>Nama Dokter</td><td>Spesialis</td>";
+
+            for (i = 0; i < arr.length; i++) {
+                out += "<tr><td>" +
+                        arr[i].id + "</td><td>" + arr[i].nama + "</td><td>" +
+                        arr[i].spesialis;
+
+            }
+            out += "</table>";
+            document.getElementById("tampil2").innerHTML = out;
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnD2l64I6G6fUkPpc3D79Jcau30v8xEKE&callback=initMap"
+async defer></script>
+</div>
+
+
+
+</body>
+</html>

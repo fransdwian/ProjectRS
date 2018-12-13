@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>Bina Bangsa | Lokasi </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: black;
+                color: white;
+                text-align: center;
+            }
+            .jumbotron {
+                background-image: url("dokter222.png");
+                background-color: #17234E;
+                margin-bottom: 0;
+                min-height: 50%;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+            a {
+                font-family: 'Josefin Sans', sans-serif;
+                text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+                font-size: 66px;
+            }
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 10px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+
+            /* Set a style for all buttons */
+            .button {
+                display: inline-block;
+                border-radius: 6px;
+                background-color: #000000;
+                border: none;
+                color: white;
+                text-align: center;
+                font-size: 28px;
+                padding: 8px;
+                width: 146px;
+                transition: all 0.5s;
+                cursor: pointer;
+            }
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+            .button:hover {
+                background-color: #1EE849;
+                color: black;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+            .button:hover span {
+                padding-right: 25px;
+            }
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+ #map {
+                height: 50%;
+                width: 50%
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+        </style>
+            </head>
+ <body style="background-image:dokter222.png">
+        <div class="jumbotron text-center">
+            <a href="index.html" style="text-decoration: none"><font color="black" size="15"><b>Rumah Sakit Bina Bangsa</font><font color="red"><b>+</b></font></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="bg">
+                        <h1><font face="Century Gothic" color=#0000 size="4"><b>Lokasi Rumah Sakit</b></font>
+                        </h1>
+                        <button class="button"  id="save" type="button" onclick="loadMaps()" style="vertical-align:middle"><font face="Century Gothic" size="4" ><span>Tampil </span></font></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <p id="demo"></p> 
+       <p id="map"></p>
+        <br>
+
+<script>
+    var map;
+    function loadMaps() {
+        var url = "http://202.94.83.190:8080/165314071RSku/webresources/lokasi";
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+                var obj = JSON.parse(this.responseText);
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15, center: {lat: obj[0].lat, lng: obj[0].lng}, });
+                var marker = [];
+                for (var i = 0; i < obj.length; i++) {
+                    marker[i] = new google.maps.Marker({position: {lat: obj[i].lat, lng: obj[i].lng}, map: map});
+                }
+            }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.send();
+    }
+    </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnD2l64I6G6fUkPpc3D79Jcau30v8xEKE&callback=initMap"
+async defer></script>
+
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bina Bangsa</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+								<nav>
+					<ul>
+	  
+
+
+						<li><a href="#intro">Beranda</a></li>
+						<li><a href="#two">Registration</a></li>
+<li><a href="cari.html">Cari Pasien</a></li>
+						<li><a href="lokasi.html">Lokasi</a></li>
+<li><a href="tambahantri.html">Tambah Antrian</a></li>
+<li><a href="tambahklinik.html">Tambah Klinik</a></li>
+<li><a href="tambahdokter.html">Tambah Dokter</a></li>
+<li><a href="daftarantri.html">Daftar Antrian</a></li>
+<li><a href="klinik.html">Daftar Klinik</a></li>
+<li><a href="dokter.html">Daftar Dokter</a></li>
+
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content">
+					<header>
+						<h2>Rumah Sakit Bina Bangsa</h2>
+					</header>
+					<p>Selamat datang di <strong>Rumah Sakit Bina Bangsa</strong>. Menjunjung tinggi kesehatan masyarakat</a>.</p>					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Profil</h2>
+					</header>
+					<p>Rumah Sakit Bina Bangsa berdiri pada tahun 2015 yang berlokasi di Sleman, Yogyakarta. Berawal dari klinik
+					kecil yang kini sudah berkembang menjadi rumah sakit besar demi melayani dan mengobati masyarakat yang sedang sakit.
+				Menjunjung tinggi nilai kemanusiaan demi menciptakan lingkungan yang sehat.</p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		
+		<!-- Work -->
+			<section id="two" class="main style3 primary">
+				<div class="content">
+					<header>
+						<h2>Registration</h2>
+					<div class="col-lg-6">
+						<div class="form-wrapper">
+						<div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
+						
+							<div class="panel panel-skin">
+							<div class="panel-heading">
+									<h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Pendaftaran <small>(Gratis)</small></h3>
+									</div>
+									<div class="panel-body">
+									<form role="form" class="lead" onsubmit="return make_json(this);" method="POST">
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<label>NIK</label>
+													<input type="text" name="nik" value="" class="form-control input-md"/>
+												</div>
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<label>Nama</label>
+													<input type="text" name="nama" value="" class="form-control input-md">
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<label>Alamat</label>
+													<input type="text" name="alamat" value="" class="form-control input-md">
+												</div>
+											</div>
+											<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<label>Tangggal Lahir</label>
+													<input type="date" name="tanggalLahir" value="" class="form-control input-md">
+												</div> 
+												</div>
+										</div> 
+												<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="form-group">
+													<label>Kelamin</label>
+													<input type="text" name="kelamin" value="" class="form-control input-md">
+												</div> 
+												</div>
+										</div> 
+
+
+
+												
+        
+            <input type="submit" value="Submit"/>
+        
+       </form>
+       <pre id="berhasil">
+           
+        </pre>
+               <script>
+            function make_json(form) {
+                var json = {
+                    "noRM": form.nik.value,
+                    "nama": form.nama.value,
+                    "alamat": form.alamat.value,
+                    "nik": form.nik.value,
+                    "tanggalLahir": form.tanggalLahir.value,
+                    "kelamin": form.kelamin.value
+
+                };
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/165314071RSku/webresources/pasien";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);
+                
+                document.getElementById("berhasil").innerHTML = "<br/>Pendaftaran Berhasil";
+                return false;
+            }
+
+        </script> 
+
+											
+									
+									</form>
+								</div>
+							</div>				
+						
+						</div>
+						</div>
+					</div>					
+				</div>		
+			</div>
+		</div>		
+    </section>					<!-- Gallery  -->
+<section id="work" class="main style3 primary">
+				<div class="content">
+						<h2>Daftar Dokter</h2>
+						<p>Dokter di rumah sakit Bina Bangsa memiliki lisensi yang mencukupi dan sangat berpengalaman</p>
+					</header>
+
+					<!-- Gallery  -->
+						<div class="gallery">
+							<article class="from-left">
+								<a href="Dokter1.jpg" class="image fit"><img src="Dokter'1.jpg" title="The Anonymous Red" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="Dokter1.jpg" class="image fit"><img src="Dokter2.jpg" title="The Anonymous Red" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="Dokter1.jpg" class="image fit"><img src="Dokter3.jpg" title="The Anonymous Red" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="Dokter3.jpg" class="image fit"><img src="Dokter4.jpg" title="Airchitecture II" alt="" /></a>
+							</article>
+							
+						</div>
+
+				</div>
+			</section>
+<button  type="button" onclick="login.html" style="vertical-align:middle"><font face="Century Gothic" size="4" ><span>Tampil</span></font></button>
+
+				<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
